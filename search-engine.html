@@ -1,0 +1,38 @@
+<html>
+  <body>
+    <input id="search" placeholder="Find product"/>
+    <p>Results1 using match callback:</p>
+    <ul id="result"></ul>
+
+    <p>Results2 using group regex:</p>
+    <ul id="result2"></ul>
+    <script>
+      const products = [
+        {title:"Laptop Lenovo T14", description: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum "},
+        {title:"Laptop Lenovo T17", description: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum "},
+        {title:'Macbook Pro 13": mac mini', description: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum "},
+        {title:'Macbook Pro 15"', description: "lorem ipsum lorem ipsum lorem ipsum lorem ipsum "},
+      ]
+      document.getElementById('search').addEventListener("input", function(e){  
+        let result='';
+        let result2='';
+        if(e.target.value){
+          let reg = new RegExp(`${e.target.value}`, 'i');
+          for(var i=0;i<products.length;i++){
+            if(reg.test(products[i].title)){              
+              // method 1
+              result+=`<li>${products[i].title.replace(reg,(match)=>{
+                return `<mark>${match}</mark>`;
+              })}</li>`;
+              //methode 2
+              let reg2 = new RegExp(`(?:(${e.target.value}))`, 'ig');
+              result2+= `<li>${products[i].title.replace(reg2,'<mark>$1</mark>')}</li>`;
+            }
+          }
+        }
+        document.getElementById('result').innerHTML= result;
+        document.getElementById('result2').innerHTML= result2;
+      });
+    </script>
+  </body>
+</html>

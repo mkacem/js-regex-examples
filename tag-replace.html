@@ -1,0 +1,24 @@
+<html>
+  <body>
+    <textarea id="search" placeholder="Find product" cols="100" rows="20"></textarea>
+   
+    <script>
+
+      const lib = [
+        {key:'header', value:'<header> hello header </header>'},
+        {key:'main', value:'<main> welcome main </main>'},
+        {key:'footer', value:'<footer> bey footer </footer>'},
+      ]
+      document.getElementById('search').addEventListener("input", function(e){
+        if(e.target.value){
+          
+
+          for(var i=0;i<lib.length;i++){
+            let reg = new RegExp(`${lib[i].key}(?![^<]*>|[^<>]*<\/)`, 'i');
+            e.target.value = e.target.value.replace(reg, lib[i].value);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
