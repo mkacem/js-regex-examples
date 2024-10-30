@@ -37,7 +37,7 @@ jobs:
           git add -A
           git checkout HEAD
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
-          git pull origin dev
+          git pull origin HEAD:dev
           git push origin HEAD:dev
       - name: Check run status
         if: steps.run.outputs.status != '0'
