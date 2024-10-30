@@ -19,12 +19,13 @@ jobs:
         uses: actions/checkout@v4  
       - name: Make the script files executable
         run: chmod +x my-script.sh
-      - name: Run the scripts
-        run: |
-          ./my-script.sh
+      # - name: Run the scripts
+      #   run: |
+      #     ./my-script.sh
       - name: Run File and collect logs
         id: run
         run:  |
+          ./my-script.sh
           echo Running File...
           cat ".github/scripts/test.txt"
           status=$(echo .github/scripts/test.txt)
