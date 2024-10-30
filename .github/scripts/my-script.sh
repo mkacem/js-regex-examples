@@ -1,7 +1,7 @@
 #/bin/sh
 
 file="../../app.properties" 
-echo 'test file' >> test.text
+echo 'test file' >> test.txt
 diff=$(git diff --unified=0 origin/HEAD~1 -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
 fileM=$(git diff --name-only origin/HEAD~1 -- $file)
 date=$(date '+%Y-%m-%d %H:%M:%S')

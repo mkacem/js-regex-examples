@@ -26,6 +26,7 @@ jobs:
         id: run
         run:  |
           echo Running File...
+          echo -e ".github/scripts/test.txt"
           status=$(echo .github/scripts/test.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
