@@ -37,7 +37,7 @@ jobs:
           git add -A
           git status
           git rev-parse --abbrev-ref HEAD
-          git checkout main
+          git checkout origin/dev
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
           git push
       - name: Check run status
