@@ -2,8 +2,8 @@
 
 file="../../app.properties" 
 echo 'test file' >> test.txt
-diff=$(git diff --unified=0 HEAD^1 HEAD | xargs -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
-fileM=$(git diff --name-only HEAD^1 HEAD | xargs -- $file)
+diff=$(git diff --unified=0 HEAD^1 HEAD -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
+fileM=$(git diff --name-only HEAD^1 HEAD -- $file)
 date=$(date '+%Y-%m-%d %H:%M:%S')
 sep1="\n____________________________________________\n"
 sep2='\n--------------------------------------------\n'
