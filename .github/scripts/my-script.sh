@@ -1,6 +1,6 @@
 #/bin/sh
 
-file="../../app.properties"
+file="../../app.properties" | grep -v "^$"
 
 if [ -f "$file" ]
 then
