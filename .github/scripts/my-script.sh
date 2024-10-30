@@ -8,6 +8,7 @@ then
 
   while IFS='=' read -r key value
   do
+    if [ -n "$key" ]; then
     echo "key=${key} value=${value}"
     # key=$(echo $key | tr '.' '_')
     # eval ${key}=\${value}
