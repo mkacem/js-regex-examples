@@ -22,3 +22,19 @@ jobs:
       - name: Run the scripts
         run: |
           ./my-script.sh
+      - name: Run File and collect logs
+        id: run
+        run:  |
+          echo Running File...
+          status=$(echo test.txt)
+          cat log.txt
+          echo "{status}={$status}" >> $GITHUB_OUTPUT
+      - name: Commit log
+        run: |
+          git add -A
+          git checkout dev
+          git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
+          git push
+      - name: Check run status
+        if: steps.run.outputs.status != '0'
+        run: exit "${{ steps.run.outputs.status }}"
