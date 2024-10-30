@@ -8,10 +8,12 @@ then
 
   while IFS='=' read -r key value
   do
-    if [ -n "$key" ]; then
-    echo "key=${key} value=${value}"
-    # key=$(echo $key | tr '.' '_')
-    # eval ${key}=\${value}
+    if [ -n "$key" ] 
+    then
+      echo "key=${key} value=${value}"
+      # key=$(echo $key | tr '.' '_')
+      # eval ${key}=\${value}
+    fi
   done < "$file"
 
   # echo "User Id       = " ${db_uat_user}
