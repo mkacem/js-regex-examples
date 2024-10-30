@@ -28,6 +28,7 @@ jobs:
           ./my-script.sh
           echo Running File...
           cat "../scripts/test.txt"
+          cat "../scripts/changelog.txt"
           status=$(echo ../scripts/test.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
