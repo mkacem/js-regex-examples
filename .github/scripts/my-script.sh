@@ -1,6 +1,6 @@
 #/bin/sh
 
-file="../../patati.properties" 
+file="../../app.properties" 
 diff=$(git diff --unified=0 HEAD~1 -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
 fileM=$(git diff --name-only HEAD~1 -- $file)
 date=$(date '+%Y-%m-%d %H:%M:%S')
