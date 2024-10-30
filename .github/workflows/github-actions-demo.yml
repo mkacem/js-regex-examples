@@ -33,7 +33,6 @@ jobs:
       - name: Commit log
         run: |
           git add -A
-          git checkout dev
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
           git push
       - name: Check run status
