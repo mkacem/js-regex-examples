@@ -1,23 +1,27 @@
 #/bin/sh
 
-file="../../app.properties" | grep -v "^$"
-
-if [ -f "$file" ]
-then
-  echo "$file found."
-
-  while IFS='=' read -r key value
-  do
-    if [ -n "$key" ] 
-    then
-      echo "key=${key} value=${value}"
-      # key=$(echo $key | tr '.' '_')
-      # eval ${key}=\${value}
-    fi
-  done < "$file"
+file="../../patati.properties" 
+diff=$(git diff --unified=0 HEAD~1 -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
+fileM=$(git diff --name-only HEAD~1 -- $file)
+date=$(date '+%Y-%m-%d %H:%M:%S')
+sep1="\n____________________________________________\n"
+sep2='\n--------------------------------------------\n'
+echo $fileM
+if [ -f "$file" ] && [ "$diff" ]
+then  
+  echo -e $sep1$date'   '$fileM$sep2$diff$sep1 >> changelog.txt
+  grep -v '^#' < "$file" | 
+    while IFS='=' read -r key value
+    do
+      if [ "$key" ] 
+      then
+        testKey="${key}"
+      fi
+    done 
+  
 
   # echo "User Id       = " ${db_uat_user}
   # echo "user password = " ${db_uat_passwd}
 else
-  echo "**** $file not found."
+  echo "**** $file not found or no changes."
 fi
