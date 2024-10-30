@@ -16,7 +16,10 @@ jobs:
         working-directory: .github/scripts
     steps:
       - name: Check out the repository to the runner
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
       - name: Make the script files executable
         run: chmod +x my-script.sh
       # - name: Run the scripts
