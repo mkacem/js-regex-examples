@@ -36,6 +36,7 @@ jobs:
           git config --global user.email 'action@github.com'
           git add -A
           git status
+          git rev-parse --abbrev-ref HEAD
           git checkout main
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
           git push
