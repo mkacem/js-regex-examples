@@ -7,7 +7,7 @@ fileM=$(git diff --name-only HEAD -- $file)
 date=$(date '+%Y-%m-%d %H:%M:%S')
 sep1="\n____________________________________________\n"
 sep2='\n--------------------------------------------\n'
-
+echo '**********'$diff
 if [ -f "$file" ] && [ "$diff" ]
 then  
   echo -e $sep1$date'   '$fileM$sep2$diff$sep1 >> changelog.txt
@@ -20,5 +20,5 @@ then
       fi
     done 
 else
-  echo "**** $file not found or no changes."
+  echo "!$file not found or no changes."
 fi
