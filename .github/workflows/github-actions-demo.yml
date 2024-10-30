@@ -32,8 +32,8 @@ jobs:
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
         run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
+          git config --global user.name 'mkacem'
+          git config --global user.email 'moez.kacem@keyrus.com'
           git add -A
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
           git push origin HEAD:dev
