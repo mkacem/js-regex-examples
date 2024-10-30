@@ -36,7 +36,7 @@ jobs:
           git config --global user.email 'action@github.com'
           git add -A
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
-          git push origin HEAD:dev
+          git push
       - name: Check run status
         if: steps.run.outputs.status != '0'
         run: exit "${{ steps.run.outputs.status }}"
