@@ -27,8 +27,8 @@ jobs:
         run:  |
           ./my-script.sh
           echo Running File...
-          cat ".github/scripts/test.txt"
-          status=$(echo .github/scripts/test.txt)
+          cat "../scripts/test.txt"
+          status=$(echo ../scripts/test.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
         run: |
