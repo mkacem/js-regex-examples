@@ -25,7 +25,7 @@ for file in $propfiles; do
     echo "!$file not found or no changes."
   fi
   if [ "$i" -eq $count ] && [ "$commitDate" = true ]; then
-    echo $sep1 >> ../../env.log.txt
+    echo -e '--------------\n' >> ../../env.log.txt
   fi
   i=$(( i + 1 ))
 done
