@@ -8,14 +8,14 @@ for file in $propfiles; do
   diff=$(git diff --unified=0 --ignore-all-space --ignore-cr-at-eol --ignore-space-at-eol --ignore-blank-lines HEAD^^ HEAD -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | sed -e 's/\+\\n//g' -e 's/-\\n//g' -e 's/\\n+$//g'  -e 's/\\n-$//g'  )
   fileM=$(git diff --name-status --ignore-all-space --ignore-blank-lines HEAD^^ HEAD -- $file)
   date=$(date '+%Y-%m-%d %H:%M:%S')
-  sep1="========================================================================"
+  sep1="________________________________________________________________________"
   sep2='\n----------------------------------------------------------------------\n'
   sep3='\n======================================================================\n'
   if [ -f "$file" ] && [ "$diff" ]
   then 
     if [ "$commitDate" = false ] 
     then
-      output=$date$sep3$fileM$sep2$diff
+      output=$sep3$date$sep3$fileM$sep2$diff
     else
       output=$sep2$fileM$sep2$diff
     fi    
