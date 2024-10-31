@@ -17,6 +17,8 @@ jobs:
     steps:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
       - name: Make the script files executable
         run: chmod +x my-script.sh
       # - name: Run the scripts
