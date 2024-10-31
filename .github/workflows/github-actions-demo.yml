@@ -36,6 +36,7 @@ jobs:
           status=$(echo ../scripts/changelog.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
+        if: always()
         run: |
           git config --global user.name 'GitHub Action'
           git config --global user.email 'action@github.com'
@@ -44,5 +45,5 @@ jobs:
           git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
           git push 
       - name: Check run status
-        if: steps.run.outputs.status != '0'
+        if: always() && steps.run.outputs.status != '0'
         run: exit "${{ steps.run.outputs.status }}"
