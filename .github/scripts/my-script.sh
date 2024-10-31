@@ -2,14 +2,14 @@
 propfiles=$(find ../../ -type f -name '*\.properties')
 for file in $propfiles; do
   echo "Processing $file"
-  diff=$(git diff --unified=0 HEAD^^ HEAD -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
-  fileM=$(git diff --name-status HEAD^^ HEAD -- $file)
+  diff=$(git diff --unified=0 --ignore-all-space --ignore-blank-lines HEAD^^ HEAD -- $file  | grep -Ev '(index|@@|--git|---|\+\+\+|new)' | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' )
+  fileM=$(git diff --name-status --ignore-all-space --ignore-blank-lines HEAD^^ HEAD -- $file)
   date=$(date '+%Y-%m-%d %H:%M:%S')
   sep1="____________________________________________\n"
   sep2='\n--------------------------------------------\n'
   echo -e '\n***********>>>>>'$file
   
-  echo $(git diff --name-status HEAD^^ HEAD -- $file)
+  echo $(git diff --name-status --ignore-all-space --ignore-blank-lines HEAD^^ HEAD -- $file)
   echo -e '\n***********>>>>>'
   if [ -f "$file" ] && [ "$diff" ]
   then  
