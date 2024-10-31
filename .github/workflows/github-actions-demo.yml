@@ -30,7 +30,7 @@ jobs:
         run:  |
           git branch -a
           git ls-tree -r origin/dev
-          git checkout --ignore-other-worktrees origin/dev .github/scripts/changelog.txt
+          git checkout --ignore-other-worktrees origin/dev changelog.txt
           ./my-script.sh
           echo Running File...
           cat "../scripts/changelog.txt"
