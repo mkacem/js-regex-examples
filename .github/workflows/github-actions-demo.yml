@@ -33,8 +33,8 @@ jobs:
           git checkout --ignore-other-worktrees origin/dev changelog.txt
           ./my-script.sh
           echo Running File...
-          cat "../scripts/changelog.txt"
-          status=$(echo ../scripts/changelog.txt)
+          cat "changelog.txt"
+          status=$(echo changelog.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
         if: true
