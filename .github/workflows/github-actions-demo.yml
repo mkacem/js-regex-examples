@@ -23,10 +23,10 @@ jobs:
         run:  |
           git branch -a
           git ls-tree -r origin/dev
-          git checkout --ignore-other-worktrees origin/dev env.log.txt
+          git checkout --ignore-other-worktrees origin/dev ../../env.log.txt
           ./log-script.sh
           echo Running File...
-          status=$(echo env.log.txt)
+          status=$(echo ../../env.log.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
         if: true
