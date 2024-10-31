@@ -17,17 +17,16 @@ jobs:
           ref: ${{ github.ref }}
           fetch-depth: 0
       - name: Make the script files executable
-        run: chmod +x my-script.sh
+        run: chmod +x log-script.sh
       - name: Run File and collect logs
         id: run
         run:  |
           git branch -a
           git ls-tree -r origin/dev
-          git checkout --ignore-other-worktrees origin/dev changelog.txt
-          ./my-script.sh
+          git checkout --ignore-other-worktrees origin/dev env.log.txt
+          ./log-script.sh
           echo Running File...
-          cat "changelog.txt"
-          status=$(echo changelog.txt)
+          status=$(echo env.log.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
         if: true
@@ -58,14 +57,14 @@ jobs:
 #           ref: ${{ github.event.pull_request.head.ref }}
 #           fetch-depth: 0
 #       - name: Make the script files executable
-#         run: chmod +x my-script.sh
+#         run: chmod +x log-script.sh
 #       - name: Run File and collect logs
 #         id: run
 #         run:  |
 #           git branch -a
 #           git ls-tree -r origin/dev
 #           git checkout --ignore-other-worktrees origin/dev changelog.txt
-#           ./my-script.sh
+#           ./log-script.sh
 #           echo Running File...
 #           cat "changelog.txt"
 #           status=$(echo changelog.txt)

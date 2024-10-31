@@ -7,13 +7,12 @@ for file in $propfiles; do
   date=$(date '+%Y-%m-%d %H:%M:%S')
   sep1="____________________________________________\n"
   sep2='\n--------------------------------------------\n'
-  echo -e '\n***********>>>>>'$file
-  
+  echo -e '\n***********>>>>>'$file  
   echo $(git diff --name-status --ignore-all-space --ignore-blank-lines HEAD^^ HEAD -- $file)
   echo -e '\n***********>>>>>'
   if [ -f "$file" ] && [ "$diff" ]
   then  
-    echo -e $sep1$date'   '$fileM$sep2$diff'\n'$sep1 >> changelog.txt
+    echo -e $sep1$date'   '$fileM$sep2$diff'\n'$sep1 >> ../../env.log.txt
     grep -v '^#' < "$file" | 
       while IFS='=' read -r key value
       do
@@ -25,7 +24,6 @@ for file in $propfiles; do
   else
     echo "!$file not found or no changes."
   fi
-  # [ -f "$i" ] || break
 done
 
 
