@@ -29,15 +29,15 @@ jobs:
           cat "changelog.txt"
           status=$(echo changelog.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
-      - name: Commit log
-        if: true
-        run: |
-          git config --global user.name 'GitHub Action'
-          git config --global user.email 'action@github.com'
-          git add -A
-          git checkout HEAD
-          git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
-          git push 
+      # - name: Commit log
+      #   if: true
+      #   run: |
+      #     git config --global user.name 'GitHub Action'
+      #     git config --global user.email 'action@github.com'
+      #     git add -A
+      #     git checkout HEAD
+      #     git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
+      #     git push 
       - name: Check run status
         if: always() && steps.run.outputs.status != '0'
         run: exit "${{ steps.run.outputs.status }}"
