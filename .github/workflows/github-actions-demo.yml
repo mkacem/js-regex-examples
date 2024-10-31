@@ -28,7 +28,7 @@ jobs:
       - name: Run File and collect logs
         id: run
         run:  |
-          git branch -r
+          git branch -a
           git checkout --ignore-other-worktrees origin/dev  .github/scripts/changelog.txt
           ./my-script.sh
           echo Running File...
