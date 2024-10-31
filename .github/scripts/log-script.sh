@@ -10,9 +10,9 @@ for file in $propfiles; do
   fileM=$(git diff --name-status --ignore-all-space --ignore-blank-lines HEAD^^ HEAD -- $file)
   echo $diff
   date=$(date '+%Y-%m-%d %H:%M:%S')
-  sep1="============================================="
-  sep2='\n--------------------------------------------\n'
-  sep3='\n============================================\n'
+  sep1="======================================================================"
+  sep2='\n--------------------------------------------------------------------\n'
+  sep3='\n====================================================================\n'
   if [ -f "$file" ] && [ "$diff" ]
   then 
     if [ "$commitDate" = false ] 
@@ -26,7 +26,7 @@ for file in $propfiles; do
   else
     echo "!$file not found or no changes."
   fi
-  if [ "$i" -eq $count ]; then
+  if [ "$i" -eq $count ] && [ "$diff" ]; then
     echo $sep1 >> ../../env.log.txt
   fi
   i=$(( i + 1 ))
