@@ -28,6 +28,7 @@ jobs:
       - name: Run File and collect logs
         id: run
         run:  |
+          git checkout --ignore-other-worktrees origin/dev  .github/scripts/changelog.txt
           ./my-script.sh
           echo Running File...
           cat "../scripts/changelog.txt"
