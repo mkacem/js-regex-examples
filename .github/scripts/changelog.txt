@@ -1,3 +1,20 @@
 ==============================start logo==============================
   >>>>>>>>>>>>>>>>>>>>> log init <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ======================================================================
+____________________________________________
+2024-10-31 11:06:24   M app.properties
+--------------------------------------------
+-app.http.cors.origins='*'
++#app.http.cors.origins='*'
+-app.http.cors.headers='Authorization,X-Requested-With,content-type'
+-app.http.cors.exposed-headers='Authorization,Link,X-Total-Count,X-Has-Next-Page,X-PDK-MSISDN,token'
++#app.http.cors.headers='Authorization,X-Requested-With,content-type'
++#app.http.cors.exposed-headers='Authorization,Link,X-Total-Count,X-Has-Next-Page,X-PDK-MSISDN,token'
+____________________________________________
+
+____________________________________________
+2024-10-31 11:06:24   A test/test.properties
+--------------------------------------------
++tetet=767676
+____________________________________________
+

@@ -16,9 +16,35 @@ jobs:
         working-directory: .github/scripts
     steps:
       - name: Check out the repository to the runner
-        uses: actions/checkout@v4  
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
       - name: Make the script files executable
         run: chmod +x my-script.sh
-      - name: Run the scripts
-        run: |
+      # - name: Run the scripts
+      #   run: |
+      #     ./my-script.sh
+      - name: Run File and collect logs
+        id: run
+        run:  |
+          git branch -a
+          git ls-tree -r origin/dev
+          git checkout --ignore-other-worktrees origin/dev changelog.txt
           ./my-script.sh
+          echo Running File...
+          cat "changelog.txt"
+          status=$(echo changelog.txt)
+          echo "{status}={$status}" >> $GITHUB_OUTPUT
+      - name: Commit log
+        if: true
+        run: |
+          git config --global user.name 'GitHub Action'
+          git config --global user.email 'action@github.com'
+          git add -A
+          git checkout HEAD
+          git diff-index --quiet HEAD || git commit -am "deploy workflow logs"
+          git push 
+      - name: Check run status
+        if: always() && steps.run.outputs.status != '0'
+        run: exit "${{ steps.run.outputs.status }}"
