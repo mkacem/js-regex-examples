@@ -26,6 +26,7 @@ jobs:
       #   run: |
       #     ./my-script.sh
       - name: Run File and collect logs
+        continue-on-error: false
         id: run
         run:  |
           git branch -a
@@ -36,6 +37,7 @@ jobs:
           status=$(echo ../scripts/changelog.txt)
           echo "{status}={$status}" >> $GITHUB_OUTPUT
       - name: Commit log
+        continue-on-error: false
         if: always()
         run: |
           git config --global user.name 'GitHub Action'
