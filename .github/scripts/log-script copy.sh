@@ -10,14 +10,6 @@ for file in $propfiles; do
   if [ -f "$file" ] && [ "$diff" ]
   then  
     echo -e $sep1$date'   '$fileM$sep2$diff'\n'$sep1 >> ../../env.log.txt
-    # grep -v '^#' < "$file" | 
-    #   while IFS='=' read -r key value
-    #   do
-    #     if [ "$key" ] 
-    #     then
-    #       testKey="${key}"
-    #     fi
-    #   done 
   else
     echo "!$file not found or no changes."
   fi
