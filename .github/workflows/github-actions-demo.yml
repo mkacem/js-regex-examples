@@ -29,7 +29,7 @@ jobs:
         id: run
         run:  |
           git branch -a
-          git checkout --ignore-other-worktrees origin/dev  .github/scripts/changelog.txt
+          git checkout --ignore-other-worktrees remotes/origin/dev .github/scripts/changelog.txt
           ./my-script.sh
           echo Running File...
           cat "../scripts/changelog.txt"
