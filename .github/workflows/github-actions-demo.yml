@@ -18,7 +18,7 @@ jobs:
       - name: Check out the repository to the runner
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.base.ref }}
           fetch-depth: 0
       - name: Make the script files executable
         run: chmod +x my-script.sh
