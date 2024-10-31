@@ -18,3 +18,12 @@ ____________________________________________
 +tetet=767676
 ____________________________________________
 
+____________________________________________
+2024-10-31 11:10:02   M app.properties
+--------------------------------------------
+-app.http.cors.access-control-allow-credentials=true
++app.http.cors.access-control-allow-credentials=true
++
++app.test.property=allow-credentials
+____________________________________________
+
